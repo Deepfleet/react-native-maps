@@ -1016,6 +1016,38 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
     };
   }
 
+<<<<<<< Updated upstream:android/src/main/java/com/airbnb/android/react/maps/AirMapView.java
+=======
+  public void setMarkerPoints(ReadableArray markers, String image, boolean skipClear){
+    Context context = this.context.getApplicationContext();
+    // Toast.makeText( this.context.getApplicationContext(), "set markers", Toast.LENGTH_SHORT).show();
+    image = image == null ? "marker" : image;
+
+    // remove all markers
+    if(!skipClear){
+      map.clear();
+    }
+    if (markers != null && map != null) {
+      for (int i = 0; i < markers.size(); i++) {
+        ReadableMap markerPoint = markers.getMap(i);
+        LatLng latLng = new LatLng(markerPoint.getDouble("latitude"), markerPoint.getDouble("longitude"));
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title(markerPoint.getString("title"));
+        markerOptions.snippet(markerPoint.getString("description"));
+        // add marker.png
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(getResources().getIdentifier(image,"drawable",this.context.getPackageName())));
+        Marker marker=map.addMarker(markerOptions);
+
+        String id=markerPoint.getString("id");
+        id=id==null?i+"":id;
+
+        markerPointMap.put(marker,id);
+      }
+    }
+  }
+
+>>>>>>> Stashed changes:android/src/main/java/com/rnmaps/maps/MapView.java
   public void setMapBoundaries(ReadableMap northEast, ReadableMap southWest) {
     if (map == null) return;
 
