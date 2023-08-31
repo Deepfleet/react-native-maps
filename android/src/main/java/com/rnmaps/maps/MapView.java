@@ -116,7 +116,7 @@ public class MapView extends com.google.android.gms.maps.MapView implements Goog
 
   private final List<MapFeature> features = new ArrayList<>();
   private final Map<Marker, MapMarker> markerMap = new HashMap<>();
-  private final Map<Marker, MapMarker> markerPointMap = new HashMap<>();
+  private final Map<Marker, String> markerPointMap = new HashMap<>();
   private final Map<Polyline, MapPolyline> polylineMap = new HashMap<>();
   private final Map<Polygon, MapPolygon> polygonMap = new HashMap<>();
   private final Map<GroundOverlay, MapOverlay> overlayMap = new HashMap<>();
